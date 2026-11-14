@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Tire B — Ultimate Gaming & Network Control Platform</title>
+  <link rel="icon" type="image/x-icon" href="app.ico">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Orbitron & Rajdhani & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            rajdhani: ['Rajdhani', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          colors: {
+            cyberDark: '#05050a',
+            cyberCard: '#0c0812',
+            cyberSurface: '#120c18',
+            cyberBorder: '#321538',
+            cyberPink: '#ff007f',
+            cyberCyan: '#00f0ff',
+            cyberEmerald: '#10b981',
+            cyberAmber: '#f59e0b'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #05050a;
+      color: #f1f5f9;
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+    }
+    .glow-pink {
+      text-shadow: 0 0 15px rgba(255, 0, 127, 0.6), 0 0 30px rgba(255, 0, 127, 0.3);
+    }
+    .glow-cyan {
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.3);
+    }
+    .glow-emerald {
+      text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+    }
+    .cyber-gradient {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.15) 0%, rgba(147, 51, 234, 0.1) 50%, rgba(5, 5, 10, 0.95) 100%);
+    }
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 0, 127, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 0, 127, 0.05) 1px, transparent 1px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #05050a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #ff007f;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="grid-bg min-h-screen flex flex-col selection:bg-pink-600 selection:text-white">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#05050a]/90 border-b border-[#321538]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="download.html" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-600 to-purple-700 flex items-center justify-center font-orbitron font-black text-white text-lg shadow-lg shadow-pink-500/30 group-hover:scale-105 transition">
+          TB
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-orbitron font-black text-xl tracking-wider text-white">TIRE <span class="text-pink-500">B</span></span>
+            <span class="text-[10px] font-mono bg-pink-500/20 text-pink-400 border border-pink-500/40 px-2 py-0.5 rounded-full font-bold">v1.4.6 LATEST</span>
+          </div>
+          <div class="text-[11px] font-mono text-slate-400">Gaming & Telemetry Platform</div>
+        </div>
+      </a>
+
+      <!-- Quick Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-orbitron font-semibold">
+        <a href="#downloads" class="text-slate-300 hover:text-pink-400 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-download text-pink-500 text-xs"></i> Download
+        </a>
+        <a href="#versions" class="text-slate-300 hover:text-pink-400 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-code-branch text-purple-400 text-xs"></i> All Versions
+        </a>
+        <a href="#features" class="text-slate-300 hover:text-pink-400 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-bolt text-cyan-400 text-xs"></i> Features
+        </a>
+        <a href="#system-reqs" class="text-slate-300 hover:text-pink-400 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-microchip text-emerald-400 text-xs"></i> Requirements
+        </a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-3">
+        <a href="Setup.exe" download="TireB_Setup.exe" onclick="handleDownload(event, 'Setup.exe')" class="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-orbitron font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-pink-500/25 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+          <i class="fa-solid fa-download"></i>
+          <span>Download Setup.exe</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOCAL FILE DETECTOR BANNER (Shown only if user opened via file:///) -->
+  <div id="localFileBanner" class="hidden bg-gradient-to-r from-amber-950/90 via-[#1f152a] to-pink-950/90 border-b-2 border-amber-500/60 p-3 text-center text-xs font-mono text-amber-200 sticky top-20 z-40 shadow-xl backdrop-blur-md">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-left">
+        <span class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400 flex items-center justify-center shrink-0 text-amber-400 font-bold">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </span>
+        <div>
+          <span class="font-bold text-white">Viewing directly from PC (<code class="text-amber-300">file:///</code> protocol):</span>
+          <span class="text-slate-300"> Browsers block clicking <code>.exe</code> links from local disk files for Windows security.</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="TireB_Setup_v1.4.6.zip" download="TireB_Setup_v1.4.6.zip" class="bg-purple-600 hover:bg-purple-500 text-white font-orbitron font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1 shadow-md">
+          <i class="fa-solid fa-file-zipper"></i> Download .ZIP Instead
+        </a>
+        <button onclick="openLocalHelpModal()" class="bg-amber-500 hover:bg-amber-400 text-black font-orbitron font-bold px-3 py-1.5 rounded-lg text-xs transition shadow-md">
+          <i class="fa-solid fa-circle-question mr-1"></i> How to Fix
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <main class="flex-1">
+    <section class="relative pt-16 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center space-y-6 max-w-4xl mx-auto">
+        <!-- Live Status Pill -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#120c18] border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold shadow-lg shadow-emerald-500/10">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Official Tire B v1.4.6 Release (Offline Ready & Low RAM Optimized)</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-orbitron font-black tracking-tight text-white leading-tight">
+          THE ULTIMATE <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400 glow-pink">GAMING & NETWORK</span> PLATFORM
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-rajdhani font-medium leading-relaxed">
+          Zero fake simulation. 100% real-time Windows gaming telemetry, Discord/Steam style live player presence, WebRTC low-latency voice stages, 4G LTE band locking, and low-RAM architecture engineered for high-FPS competitive PC gaming.
+        </p>
+
+        <!-- DOWNLOAD BUTTONS HERO -->
+        <div id="downloads" class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <!-- Primary: Setup.exe -->
+          <a href="Setup.exe" download="TireB_Setup.exe" onclick="handleDownload(event, 'Setup.exe')" class="w-full sm:w-auto bg-gradient-to-r from-pink-600 via-pink-500 to-purple-600 hover:opacity-95 text-white font-orbitron font-black text-sm px-8 py-4 rounded-2xl shadow-2xl shadow-pink-600/40 transition transform hover:-translate-y-1 flex items-center justify-center gap-3 border border-pink-400/40">
+            <i class="fa-solid fa-download text-lg"></i>
+            <div class="text-left">
+              <div class="text-[11px] uppercase tracking-wider text-pink-200 font-mono font-normal">Recommended For All PCs</div>
+              <div class="text-base">Download Setup.exe (50.2 MB)</div>
+            </div>
+          </a>
+
+          <!-- Secondary: ZIP Package -->
+          <a href="TireB_Setup_v1.4.6.zip" download="TireB_Setup_v1.4.6.zip" class="w-full sm:w-auto bg-gradient-to-r from-purple-700 to-indigo-700 hover:opacity-95 text-white font-orbitron font-bold text-sm px-7 py-4 rounded-2xl border border-purple-400/40 shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
+            <i class="fa-solid fa-file-zipper text-cyan-300 text-lg"></i>
+            <div class="text-left">
+              <div class="text-[11px] uppercase tracking-wider text-purple-200 font-mono font-normal">Browser Firewall Safe</div>
+              <div class="text-base">Download Setup (.ZIP)</div>
+            </div>
+          </a>
+
+          <!-- Tertiary: Portable TireB.exe -->
+          <a href="TireB.exe" download="TireB.exe" onclick="handleDownload(event, 'TireB.exe')" class="w-full sm:w-auto bg-[#120c18] hover:bg-[#1a1222] text-white font-orbitron font-bold text-sm px-7 py-4 rounded-2xl border border-[#321538] hover:border-pink-500/50 shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
+            <i class="fa-solid fa-box-archive text-pink-400 text-lg"></i>
+            <div class="text-left">
+              <div class="text-[11px] uppercase tracking-wider text-slate-400 font-mono font-normal">Portable Standalone</div>
+              <div class="text-base">Download TireB.exe</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Meta info & Security Badges -->
+        <div class="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400">
+          <span class="flex items-center gap-1.5"><i class="fa-brands fa-windows text-cyan-400"></i> Windows 10 / 11 (64-bit)</span>
+          <span>&bull;</span>
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-hard-drive text-purple-400"></i> 50.2 MB Installer</span>
+          <span>&bull;</span>
+          <span class="flex items-center gap-1.5"><i class="fa-solid fa-memory text-emerald-400"></i> ~46 MB Low RAM Mode</span>
+          <span>&bull;</span>
+          <span class="flex items-center gap-1.5 text-emerald-400"><i class="fa-solid fa-shield-check"></i> 100% Virus-Free & Safe</span>
+        </div>
+      </div>
+
+      <!-- APP PREVIEW SHOWCASE -->
+      <div class="mt-14 max-w-5xl mx-auto rounded-3xl bg-gradient-to-b from-[#1a1222] to-[#0c0812] p-2.5 sm:p-4 border-2 border-pink-500/40 shadow-2xl shadow-pink-500/15">
+        <div class="rounded-2xl bg-[#05050a] border border-[#321538] p-4 sm:p-6 space-y-6">
+          <!-- Top Window Bar -->
+          <div class="flex items-center justify-between border-b border-[#321538] pb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              <span class="ml-2 font-mono text-xs text-slate-400 font-bold">Tire B — Ultimate Gaming Platform v1.4.6</span>
+            </div>
+            <div class="flex items-center gap-3 text-xs font-mono">
+              <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Cloud Mesh Online</span>
+              <span class="text-pink-400 font-bold"><i class="fa-solid fa-crown mr-1"></i> Himansha Nethsara (Admin)</span>
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid in Preview -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Card 1 -->
+            <div class="bg-[#120c18] border border-pink-500/30 p-4 rounded-xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-orbitron font-bold text-xs text-pink-400">LIVE PRESENCE</span>
+                <span class="text-[10px] font-mono bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">ONLINE NOW</span>
+              </div>
+              <div class="text-xl font-orbitron font-bold text-white">Discord & Steam Roster</div>
+              <p class="text-xs text-slate-400">See who is 🟢 Online Right Now with real ping and ⚪ Offline with exact last seen timestamps.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-[#120c18] border border-purple-500/30 p-4 rounded-xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-orbitron font-bold text-xs text-purple-400">LIVE STAGE VOICE</span>
+                <span class="text-[10px] font-mono bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30">P2P WEBRTC</span>
+              </div>
+              <div class="text-xl font-orbitron font-bold text-white">Voice & Direct Messaging</div>
+              <p class="text-xs text-slate-400">Talk live with friends using real Windows microphone & speaker capture with animated speaking halos.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-[#120c18] border border-emerald-500/30 p-4 rounded-xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-orbitron font-bold text-xs text-emerald-400">LOW-END PC READY</span>
+                <span class="text-[10px] font-mono bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30">~46 MB RAM</span>
+              </div>
+              <div class="text-xl font-orbitron font-bold text-white">Ultra-Smooth Gaming</div>
+              <p class="text-xs text-slate-400">Native memory trimming and consolidated process engine keeps 100% of your PC's power free for gaming.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ALL VERSIONS / RELEASE ARCHIVE SECTION -->
+    <!-- ========================================== -->
+    <section id="versions" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#321538]">
+      <div class="space-y-4 text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono font-bold">
+          <i class="fa-solid fa-code-branch"></i> Complete Release History
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-black text-white">
+          DOWNLOAD <span class="text-pink-500">ANY VERSION</span>
+        </h2>
+        <p class="text-slate-400 text-sm font-rajdhani">
+          Choose from the latest stable release or download previous builds of Tire B. All installers are 100% offline-ready.
+        </p>
+      </div>
+
+      <!-- Versions List -->
+      <div class="space-y-4 max-w-4xl mx-auto">
+
+        <!-- VERSION 1.4.6 (LATEST STABLE) -->
+        <div class="bg-gradient-to-r from-[#1a1222] to-[#0c0812] border-2 border-emerald-500/60 p-6 rounded-2xl space-y-4 shadow-xl shadow-emerald-500/10 relative">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-lg">
+                <i class="fa-solid fa-star"></i>
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-xl font-orbitron font-bold text-white">Tire B v1.4.6</h3>
+                  <span class="bg-emerald-500 text-black font-black text-[10px] font-orbitron px-2 py-0.5 rounded shadow">LATEST STABLE</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">Released: November 14, 2026 &bull; Architecture: Windows x64</div>
+              </div>
+            </div>
+
+            <!-- Download Buttons -->
+            <div class="flex items-center gap-2.5">
+              <a href="Setup.exe" download="TireB_Setup_v1.4.6.exe" class="bg-emerald-600 hover:bg-emerald-500 text-white font-orbitron font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-lg shadow-emerald-500/20">
+                <i class="fa-solid fa-download"></i>
+                <span>Setup.exe (50.2 MB)</span>
+              </a>
+              <a href="TireB.exe" download="TireB_v1.4.6.exe" class="bg-[#120c18] hover:bg-[#1f152a] text-slate-300 hover:text-white font-orbitron font-bold text-xs px-4 py-2.5 rounded-xl transition border border-[#321538] flex items-center gap-1.5">
+                <i class="fa-solid fa-box"></i>
+                <span>Portable .exe</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Changelog -->
+          <div class="bg-[#05050a] border border-[#321538] p-4 rounded-xl text-xs font-mono space-y-1.5 text-slate-300">
+            <div class="font-bold text-pink-400 uppercase text-[11px] mb-1"><i class="fa-solid fa-sparkles mr-1"></i> What's New in v1.4.6:</div>
+            <div>&bull; <b class="text-white">Ultra-Low RAM Optimization:</b> Consolidates Chromium worker tasks; uses ~46 MB working set memory.</div>
+            <div>&bull; <b class="text-white">Discord/Steam Roster:</b> Retained cloud database permanently displays who is 🟢 Online Right Now vs ⚪ Offline.</div>
+            <div>&bull; <b class="text-white">1-on-1 Direct Messaging (DMs):</b> Send private messages with delivery alerts & persistent history.</div>
+            <div>&bull; <b class="text-white">Live WebRTC Voice Channels:</b> Real P2P audio stage with Google STUN and speaking visualizers.</div>
+            <div>&bull; <b class="text-white">Master Admin Authority:</b> Verified control panel strictly secured for <span class="text-amber-400">himanshanethsara24@gmail.com</span>.</div>
+          </div>
+        </div>
+
+        <!-- VERSION 1.4.5 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/40 p-6 rounded-2xl space-y-4 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 font-bold text-lg">
+                <i class="fa-solid fa-code-commit"></i>
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg font-orbitron font-bold text-white">Tire B v1.4.5</h3>
+                  <span class="bg-slate-800 text-slate-400 font-mono text-[10px] px-2 py-0.5 rounded border border-slate-700">PREVIOUS</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">Released: November 7, 2026 &bull; Architecture: Windows x64</div>
+              </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="TireB_Setup.exe" download="TireB_Setup_v1.4.5.exe" class="bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-90 text-white font-orbitron font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-pink-500/20">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Setup (v1.4.5)</span>
+            </a>
+          </div>
+
+          <!-- Notes -->
+          <div class="text-xs font-mono text-slate-400">
+            Added real Windows ICMP millisecond ping measurement, native Inno Setup offline installer, and gaming network stabilization.
+          </div>
+        </div>
+
+        <!-- VERSION 1.4.0 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/40 p-6 rounded-2xl space-y-4 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-bold text-lg">
+                <i class="fa-solid fa-code-commit"></i>
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg font-orbitron font-bold text-white">Tire B v1.4.0</h3>
+                  <span class="bg-slate-800 text-slate-400 font-mono text-[10px] px-2 py-0.5 rounded border border-slate-700">ARCHIVE</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">Released: November 1, 2026 &bull; Architecture: Windows x64</div>
+              </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="Setup.exe" download="TireB_Setup_v1.4.0.exe" class="bg-[#1f152a] hover:bg-[#2d1b3e] text-slate-200 font-orbitron font-bold text-xs px-4 py-2.5 rounded-xl transition border border-purple-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Setup (v1.4.0)</span>
+            </a>
+          </div>
+
+          <!-- Notes -->
+          <div class="text-xs font-mono text-slate-400">
+            Real Windows audio device auto-detection via `winmm.dll`, Cloud Mesh MQTT telemetry, and lobby chat.
+          </div>
+        </div>
+
+        <!-- VERSION 1.3.0 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/40 p-6 rounded-2xl space-y-4 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 font-bold text-lg">
+                <i class="fa-solid fa-code-commit"></i>
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg font-orbitron font-bold text-white">Tire B v1.3.0</h3>
+                  <span class="bg-slate-800 text-slate-400 font-mono text-[10px] px-2 py-0.5 rounded border border-slate-700">ARCHIVE</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">Released: October 20, 2026 &bull; Architecture: Windows x64</div>
+              </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="Setup.exe" download="TireB_Setup_v1.3.0.exe" class="bg-[#1f152a] hover:bg-[#2d1b3e] text-slate-200 font-orbitron font-bold text-xs px-4 py-2.5 rounded-xl transition border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Setup (v1.3.0)</span>
+            </a>
+          </div>
+
+          <!-- Notes -->
+          <div class="text-xs font-mono text-slate-400">
+            Authentic Huawei 4G HiLink API band locking (B1, B3, B8, B20, B38, B40, B41) & high-frequency socket stabilizer.
+          </div>
+        </div>
+
+        <!-- VERSION 1.0.0 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/40 p-6 rounded-2xl space-y-4 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 font-bold text-lg">
+                <i class="fa-solid fa-code-commit"></i>
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg font-orbitron font-bold text-white">Tire B v1.0.0</h3>
+                  <span class="bg-slate-800 text-slate-400 font-mono text-[10px] px-2 py-0.5 rounded border border-slate-700">INITIAL</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">Released: October 1, 2026 &bull; Architecture: Windows x64</div>
+              </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="Setup.exe" download="TireB_Setup_v1.0.0.exe" class="bg-[#1f152a] hover:bg-[#2d1b3e] text-slate-200 font-orbitron font-bold text-xs px-4 py-2.5 rounded-xl transition border border-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Setup (v1.0.0)</span>
+            </a>
+          </div>
+
+          <!-- Notes -->
+          <div class="text-xs font-mono text-slate-400">
+            Initial release of the Tire B Cyberpunk Gaming Suite with desktop launcher.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FEATURES BREAKDOWN -->
+    <!-- ========================================== -->
+    <section id="features" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#321538]">
+      <div class="text-center space-y-4 max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-mono font-bold">
+          <i class="fa-solid fa-shield-halved"></i> Engineered For Gamers
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-black text-white">
+          WHY GAMERS CHOOSE <span class="text-pink-500">TIRE B</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/50 p-6 rounded-2xl space-y-3 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl">
+            <i class="fa-solid fa-gauge-high"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white">100% Real ICMP Ping</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Zero fake numbers or artificial animations. Direct millisecond latency queries against Tier-1 backbone DNS servers (1.1.1.1 & 8.8.8.8) using authentic Windows ICMP sockets.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/50 p-6 rounded-2xl space-y-3 transition">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white">Discord & Steam Presence</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Instant multi-client presence without delay. Every registered account is permanently remembered, showing 🟢 Online Right Now (with live ping) vs ⚪ Offline with exact last-seen timestamps.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/50 p-6 rounded-2xl space-y-3 transition">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white">WebRTC Low-Latency Voice</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Join public and private voice stage rooms. Uses Google STUN peer-to-peer audio streaming with real microphone capture, Discord-style mute/deafen controls, and animated speaking halos.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/50 p-6 rounded-2xl space-y-3 transition">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-xl">
+            <i class="fa-solid fa-tower-cell"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white">Huawei 4G Band Locking</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Direct carrier frequency locking via Huawei HiLink API. Locks B1, B3, B8, B20, B38, B40, and B41 to eliminate congestion and packet loss during cellular competitive gaming.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/50 p-6 rounded-2xl space-y-3 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white">Ultra-Low RAM Footprint</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Eliminates redundant Chromium worker processes and Edge background tasks. Runs at ~46 MB working set memory with zero GPU competition, ensuring games run at peak FPS.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-[#120c18] border border-[#321538] hover:border-pink-500/50 p-6 rounded-2xl space-y-3 transition">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-xl">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white">Secured Root Admin System</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Strict founder authority secured for <span class="text-amber-400 font-mono">himanshanethsara24@gmail.com</span>. Includes global live announcements, remote user kick/restore, and chat moderation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SYSTEM REQUIREMENTS -->
+    <!-- ========================================== -->
+    <section id="system-reqs" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#321538]">
+      <div class="text-center space-y-4 max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-black text-white">
+          SYSTEM <span class="text-cyan-400">REQUIREMENTS</span>
+        </h2>
+        <p class="text-slate-400 text-sm font-rajdhani">
+          Tire B is engineered to run seamlessly on everything from modern high-end gaming rigs to low-spec budget laptops.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- Minimum -->
+        <div class="bg-[#0c0812] border border-[#321538] p-6 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between border-b border-[#321538] pb-3">
+            <span class="font-orbitron font-bold text-sm text-slate-200">MINIMUM SPECIFICATIONS</span>
+            <span class="text-[10px] font-mono bg-slate-800 text-slate-400 px-2 py-0.5 rounded">LOW-END PC</span>
+          </div>
+          <ul class="text-xs font-mono space-y-2.5 text-slate-300">
+            <li class="flex items-center justify-between"><span>OS:</span><b class="text-white">Windows 10 / 11 (64-bit)</b></li>
+            <li class="flex items-center justify-between"><span>Processor:</span><b class="text-white">Dual-Core 1.6 GHz or higher</b></li>
+            <li class="flex items-center justify-between"><span>RAM:</span><b class="text-emerald-400">2 GB (App uses only ~46 MB)</b></li>
+            <li class="flex items-center justify-between"><span>Disk Space:</span><b class="text-white">250 MB Free Space</b></li>
+            <li class="flex items-center justify-between"><span>Audio:</span><b class="text-white">Any Windows Mic & Speaker</b></li>
+          </ul>
+        </div>
+
+        <!-- Recommended -->
+        <div class="bg-gradient-to-br from-[#1a1222] to-[#0c0812] border-2 border-pink-500/50 p-6 rounded-2xl space-y-4 shadow-xl shadow-pink-500/10">
+          <div class="flex items-center justify-between border-b border-pink-500/30 pb-3">
+            <span class="font-orbitron font-bold text-sm text-pink-400">RECOMMENDED SPECIFICATIONS</span>
+            <span class="text-[10px] font-mono bg-pink-500/20 text-pink-400 px-2 py-0.5 rounded border border-pink-500/40">HIGH FPS GAMING</span>
+          </div>
+          <ul class="text-xs font-mono space-y-2.5 text-slate-300">
+            <li class="flex items-center justify-between"><span>OS:</span><b class="text-white">Windows 11 (64-bit) Latest</b></li>
+            <li class="flex items-center justify-between"><span>Processor:</span><b class="text-white">Quad-Core 2.5 GHz+ (Intel / AMD)</b></li>
+            <li class="flex items-center justify-between"><span>RAM:</span><b class="text-emerald-400">4 GB+ DDR4 / DDR5</b></li>
+            <li class="flex items-center justify-between"><span>Disk Space:</span><b class="text-white">500 MB (NVMe / SSD)</b></li>
+            <li class="flex items-center justify-between"><span>Network:</span><b class="text-white">Ethernet LAN or 4G LTE Router</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#321538]">
+      <div class="text-center space-y-4 max-w-3xl mx-auto mb-10">
+        <h2 class="text-3xl sm:text-4xl font-orbitron font-black text-white">FREQUENTLY ASKED QUESTIONS</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4 text-xs font-mono">
+        <div class="bg-[#120c18] border border-[#321538] p-5 rounded-xl space-y-2">
+          <div class="text-sm font-bold text-white font-orbitron flex items-center gap-2">
+            <i class="fa-solid fa-circle-question text-pink-400"></i>
+            Does the setup require internet connection to install?
+          </div>
+          <p class="text-slate-400 leading-relaxed font-rajdhani text-sm">
+            No! Both <b>Setup.exe</b> and <b>TireB.exe</b> are 100% self-contained. The installer includes all necessary runtime prerequisites so you can install and use it completely offline on any computer.
+          </p>
+        </div>
+
+        <div class="bg-[#120c18] border border-[#321538] p-5 rounded-xl space-y-2">
+          <div class="text-sm font-bold text-white font-orbitron flex items-center gap-2">
+            <i class="fa-solid fa-circle-question text-emerald-400"></i>
+            Will this lag or drop FPS while I play games like CS2, Valorant, or GTA V?
+          </div>
+          <p class="text-slate-400 leading-relaxed font-rajdhani text-sm">
+            Not at all. Tire B uses native Windows <b>EmptyWorkingSet</b> memory flushing and software rasterization. When you minimize Tire B to game, its RAM drops to ~46 MB and idle CPU drops to 0.0%, leaving all hardware power free for your games.
+          </p>
+        </div>
+
+        <div class="bg-[#120c18] border border-[#321538] p-5 rounded-xl space-y-2">
+          <div class="text-sm font-bold text-white font-orbitron flex items-center gap-2">
+            <i class="fa-solid fa-circle-question text-purple-400"></i>
+            How does the live online/offline player status work?
+          </div>
+          <p class="text-slate-400 leading-relaxed font-rajdhani text-sm">
+            Tire B connects to the decentralized Cloud Mesh. Retained status channels immediately push live statuses (🟢 Online Right Now with ping vs ⚪ Offline with exact last-seen timestamps) across all computers without waiting.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATOR & FOUNDER CARD -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-[#1a1222] to-[#0c0812] border-2 border-amber-500/50 p-8 rounded-3xl text-center space-y-4 shadow-2xl shadow-amber-500/10">
+        <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center mx-auto text-2xl text-amber-400">
+          👑
+        </div>
+        <div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">FOUNDER & SYSTEM ARCHITECT</div>
+        <h3 class="text-2xl font-orbitron font-black text-white">Website & Platform Created by Nethsara H Thenabadu</h3>
+        <p class="text-slate-300 max-w-lg mx-auto text-sm font-rajdhani">
+          Cyberpunk UI/UX Engineer, Full-Stack Real-Time Network Architect, and Master Administrator (<span class="text-amber-400 font-mono font-bold">himanshanethsara24@gmail.com</span>).
+        </p>
+        <div class="pt-2 flex items-center justify-center gap-3">
+          <a href="https://www.facebook.com/nethsaraz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl text-xs font-orbitron transition shadow-lg shadow-blue-500/25">
+            <i class="fa-brands fa-facebook text-base"></i>
+            <span>Founder Facebook Profile</span>
+          </a>
+          <a href="mailto:himanshanethsara24@gmail.com" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-6 py-2.5 rounded-xl text-xs font-orbitron transition border border-slate-700">
+            <i class="fa-solid fa-envelope text-pink-400"></i>
+            <span>Contact Creator</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#05050a] border-t border-[#321538] py-8 text-center text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <div class="flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+        <span class="text-slate-300 font-orbitron font-bold">TIRE B PLATFORM &bull; v1.4.6</span>
+      </div>
+      <p>&copy; 2026 Nethsara H Thenabadu. All rights reserved. Free for competitive gamers worldwide.</p>
+    </div>
+  </footer>
+
+  <!-- LOCAL HELP MODAL -->
+  <div id="localHelpModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#120c18] border-2 border-amber-500/60 w-full max-w-lg rounded-2xl p-6 shadow-2xl space-y-4 text-left">
+      <div class="flex items-center justify-between border-b border-[#321538] pb-3">
+        <div class="flex items-center gap-2 font-orbitron font-bold text-amber-400 text-base">
+          <i class="fa-solid fa-circle-info"></i> How to Download on Windows
+        </div>
+        <button onclick="closeLocalHelpModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <p class="text-xs text-slate-300 font-rajdhani text-sm leading-relaxed">
+        You are currently viewing this website file directly from your disk (<code class="text-pink-400 font-mono font-bold">file:///</code> protocol). For security, Windows and modern browsers (Chrome/Edge) do not permit web links to directly download local <code>.exe</code> files through file paths.
+      </p>
+
+      <div class="space-y-2.5 text-xs font-mono">
+        <div class="bg-[#05050a] p-3 rounded-xl border border-emerald-500/40 space-y-1">
+          <b class="text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-folder-open"></i> Method 1: Install Directly from Folder (Instant)</b>
+          <p class="text-slate-300">Because this page is in the same folder as the app files on your PC, you can simply double-click <b class="text-white">Setup.exe</b> right in your folder to install!</p>
+        </div>
+        <div class="bg-[#05050a] p-3 rounded-xl border border-cyan-500/40 space-y-1">
+          <b class="text-cyan-400 flex items-center gap-1.5"><i class="fa-solid fa-server"></i> Method 2: Double-click Launch_Website.bat</b>
+          <p class="text-slate-300">Run <b class="text-white">Launch_Website.bat</b> in this folder. It opens the site on <code>http://localhost:8080</code> where clicking the button downloads instantly with the browser download bar!</p>
+        </div>
+        <div class="bg-[#05050a] p-3 rounded-xl border border-purple-500/40 space-y-1">
+          <b class="text-purple-400 flex items-center gap-1.5"><i class="fa-solid fa-file-zipper"></i> Method 3: Download the .ZIP Package</b>
+          <p class="text-slate-300">Download the <b class="text-white">Setup (.ZIP)</b> package button. Browsers allow zip file transfers without local security blocks.</p>
+        </div>
+      </div>
+
+      <div class="pt-2 flex items-center justify-between">
+        <span class="text-[10px] text-slate-500 font-mono">Note: On real web hosting, downloads work 100% automatically.</span>
+        <button onclick="closeLocalHelpModal()" class="bg-pink-600 hover:bg-pink-500 text-white font-orbitron font-bold px-5 py-2 rounded-xl text-xs transition shadow-md">
+          Got it
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if viewing directly via file:/// protocol
+      if (window.location.protocol === 'file:') {
+        const banner = document.getElementById('localFileBanner');
+        if (banner) banner.classList.remove('hidden');
+      }
+    });
+
+    function handleDownload(e, filename) {
+      if (window.location.protocol === 'file:') {
+        if (filename.endsWith('.exe')) {
+          // Tell user why file:/// restricts direct .exe link clicks
+          openLocalHelpModal();
+        }
+      }
+    }
+
+    function openLocalHelpModal() {
+      const m = document.getElementById('localHelpModal');
+      if (m) m.classList.remove('hidden');
+    }
+
+    function closeLocalHelpModal() {
+      const m = document.getElementById('localHelpModal');
+      if (m) m.classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
